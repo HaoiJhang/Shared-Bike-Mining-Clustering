@@ -1,0 +1,244 @@
+% 自訂字體的封包
+\usepackage{fontspec} 
+\setmonofont{CodeNewRomanNerdFontMono-Regular.otf}[Scale=MatchLowercase]
+\usepackage{color} 
+\usepackage{xcolor}
+
+
+
+% 數學工具及符號
+\usepackage{mathtools, amsmath, amsfonts, amsthm, latexsym} 
+
+% 定义一个新的计数器
+% 导入必要的包
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox} % 用于创建带有阴影效果的框
+\definecolor{myblockbgcolor}{RGB}{241, 241, 255}
+\definecolor{Myblue}{RGB}{241, 241, 255}
+\definecolor{Default_Blue}{RGB}{52,51,171}
+\setbeamercolor{structure}{fg=Myblue} 
+% 定义一个新的计数器
+\newcounter{defname}
+
+% 自定义问题环境
+\newenvironment{mydef}{
+  \stepcounter{defname}
+  \begin{tcolorbox}[colframe=black, colback=blue!10, title=\textbf{定义 \arabic{defname}}]
+}{
+  \end{tcolorbox}
+}
+
+% 公式
+% 自定义tcolorbox代码框样式
+% 自定义tcolorbox代码框样式
+\newtcolorbox[auto counter, number within=section]{listing}[2][]{%
+  colback=yellow!10!white,      % 代码背景色
+  colframe=black,                % 代码框框架颜色为黑色
+  title=\textbf{代码},           % 标题为加粗的"代码"
+  fonttitle=\bfseries           % 标题加粗
+}
+
+
+\usepackage{xcolor} % 如果你需要自定义颜色
+
+% 分別將數學符號間的間隔加大及加粗
+\usepackage{newtxtext,newtxmath}
+
+% 圖表自動編號的封包
+\usepackage{caption} 
+
+%% 設定自動編號
+\setbeamertemplate{caption}[numbered]
+
+% 導入圖形與表格的封包
+\usepackage{graphicx}  % \scalebox{} 可用於將過大的表格縮小
+\usepackage{booktabs}
+
+% 排列多個子圖形的封包
+\usepackage{subfigure} 
+
+% 允許表格的一格能多列呈現的封包
+\usepackage{multirow} 
+
+% 可指定表格排版的封包
+\usepackage{array}
+
+% 翻轉表格的封包
+\usepackage{lscape} 
+
+% 序列標號
+\usepackage{enumerate} 
+
+% 繪圖封包 (用於添加浮水印)
+\usepackage{tikz}
+\usepackage{svg}
+\usepackage{float}
+
+% 引注參考資料
+\usepackage{natbib}
+
+% 註釋掉大部分的封包
+\usepackage{comment}
+
+% 浮水印
+
+% 设置背景模板
+\usebackgroundtemplate{%
+    \tikz[overlay, remember picture] % 使用 TikZ 创建一个覆盖层
+        \node[opacity=0.1, anchor=center, at=(current page.center)] % 设置透明度和位置
+            {\includegraphics[scale=0.0618]{Fig/上海财经大学-logo-2048px.png}}; % 载入并缩放图片
+}
+
+\mode<presentation>{
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+% \usetheme{Boadilla}
+% \usetheme{CambridgeUS}
+% \usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+\usetheme[style=light]{Nord}
+
+%----------------------------------------------------------------------------------------
+%	外框形式 (擇一，不選等同選擇默認的外框形式)
+%----------------------------------------------------------------------------------------
+
+\useoutertheme{default}
+% \useoutertheme{infolines}
+% \useoutertheme{miniframes}
+% \useoutertheme{smoothbars}
+%\useoutertheme{sidebar}
+%\useoutertheme{split}
+% \useoutertheme{shadow}
+% \useoutertheme{tree}
+% \useoutertheme{smoothtree}
+
+%----------------------------------------------------------------------------------------
+%	外框的自訂義調整 
+%----------------------------------------------------------------------------------------
+
+% 外框上緣的字 (fg) 為黑色，背景 (bg) 為白色。
+%\setbeamercolor{section in head/foot}{fg=white, bg=black} 
+
+% 外框上緣顯示的章節(section)頁數標籤是否關閉
+% \setbeamertemplate{mini frames}{}   
+
+% 調整外框形式的字體大小
+\setbeamerfont{headline}{size=\scriptsize}
+\setbeamerfont{footline}{size=\scriptsize}
+
+% 取消右下方的跳轉工具列
+%\setbeamertemplate{navigation symbols}{} 
+
+% % 自定義1：外框下緣僅出現名字及頁碼
+% \setbeamertemplate{footline}
+% {\leavevmode%
+% \hbox{%
+% \begin{beamercolorbox}[wd=0.5\paperwidth,ht=3ex,dp=1ex,leftskip=2ex]%
+% {author in head/foot}%
+% {\footnotesize\textbf{\insertshortauthor}}%
+% \end{beamercolorbox}%
+% \begin{beamercolorbox}[wd=0.5\paperwidth,ht=3ex,dp=1ex,right]%
+% {author in head/foot}%
+% \footnotesize \textbf{{\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}}} %頁碼控制選項
+% \end{beamercolorbox}%
+% }}
+
+%% 自定義2：清除外框下緣但僅出頁碼
+%\setbeamertemplate{footline}[page number] 
+
+%% 自定義3：清除外框下緣
+%\setbeamertemplate{footline}[] 
+
+%----------------------------------------------------------------------------------------
+%	顏色主題 (擇一，不選等同選擇默認的顏色主題)
+%----------------------------------------------------------------------------------------
+
+% \usecolortheme{default}
+%\usecolortheme{albatross}
+% \usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+% \usecolortheme{dolphin}
+\usecolortheme{dove}
+% \usecolortheme{fly}
+% \usecolortheme{lily}
+%\usecolortheme{orchid}
+ % \usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+% \usecolortheme{whale}
+%\usecolortheme{wolverine}
+% \usecolortheme{spruce}
+%----------------------------------------------------------------------------------------
+%	顏色主題的自訂義調整 
+%----------------------------------------------------------------------------------------
+
+% 全文的主題色 (可以特別針對報告對象或機構的代表色調整！)
+% \setbeamercolor{structure}{fg=Myblue} 
+
+% 封面頁中標題區塊的底色及字體顏色
+%\setbeamercolor{title}{bg=green, fg=black} 
+
+% 各頁標題區塊的底色及字體顏色
+%\setbeamercolor{frametitle}{bg=white,fg=black} 
+
+% 全文的內文顏色
+%\setbeamercolor{normal text}{fg=orange}
+
+% 數學區塊的標題顏色 
+%\setbeamercolor{block title}{bg=blue,fg=yellow} 
+
+% 數學區塊的內文顏色 
+%\setbeamercolor{block body}{bg=green,fg=red} 
+
+% 警示文字的顏色
+\setbeamercolor{alerted text}{fg=red} 
+
+%----------------------------------------------------------------------------------------
+%	enumerate 及 item 的形狀
+%----------------------------------------------------------------------------------------
+
+%\useinnertheme{rounded} % 圓球 (3D)
+\useinnertheme{circles} % 圓形 (2D)
+%\useinnertheme{rectangles} % 方形
+% \useinnertheme{triangle} % 三角形
+%\useinnertheme{inmargin} % 插入邊沿
+\setbeamertemplate{itemize items}[triangle]
+
+%----------------------------------------------------------------------------------------
+%	自訂 item 的顏色
+%----------------------------------------------------------------------------------------
+
+%\setbeamercolor{item projected}{bg=red}
+
+%----------------------------------------------------------------------------------------
+%	個人化的設置及細節調整
+%----------------------------------------------------------------------------------------
+
+% 設定頁面邊界
+\setbeamersize{text margin left=  0.75cm, text margin right= 0.75cm}
+\special{papersize=\the\paperwidth,\the\paperheight}
+\providecommand{\tabularnewline}{\\}
+}
+
